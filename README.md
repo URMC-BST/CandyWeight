@@ -29,4 +29,6 @@ An illustration of the power of simple random sampling and GitHub...or not.
    usethis::create_github_token()
    gitcreds::gitcreds_set()
    ```
-Save this in a password manager, as you may need to reenter it occasionally
+Save this in a password manager, as you may need to reenter it occasionally.
+
+Still cached?
