@@ -40,14 +40,17 @@ Who has committed besides the classroom[bot]?
 
 
 ```{r}
-repos_today = tibble(repo = repos_accepted) %>% semi_join(commits %>% filter(date > as.POSIXct('2021-08-29 00:00:00')))
+# Made some "fake" commits on day 1, exclude these
+yesterday = Sys.time() - 3600*24
+repos_today = tibble(repo = repos_accepted) %>% semi_join(commits %>% filter(date > yesterday))
 
 yml_to_tibble = function(yml_string) yaml::read_yaml(textConnection(yml_string)) %>% tibble::as_tibble()
 weights_parsed = purrr::map_dfr(repos_today$repo, ~ repo_get_file(.x,  'weight.yml', include_details = FALSE) %>% yml_to_tibble, .id = 'repo')
 ```
 
 ```{r}
-true_weight = 1272-57
+true_weight = 1272-#total weight
+  57 #minus bag
 ```
 
 ```{r}
